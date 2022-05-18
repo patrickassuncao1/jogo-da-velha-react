@@ -1,15 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { ThemeProvider } from 'styled-components';
+import Game from './pages/Game';
+import GlobalStyle from './styles/global';
+import theme from './styles/theme';
+
 import reportWebVitals from './reportWebVitals';
+import PlayerProvider from './context/Player';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+document.title = 'Jogo da Velha';
+
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <PlayerProvider>
+        <Game />
+      </PlayerProvider>
+    </ThemeProvider>
+
   </React.StrictMode>
 );
 
