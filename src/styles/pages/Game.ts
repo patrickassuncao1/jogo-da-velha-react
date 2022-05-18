@@ -8,7 +8,7 @@ export const GameDiv = styled(motion.div)`
     justify-content: center;
     width: 100%;
     height: 100vh;
-
+    position: relative;
 
     div.content-lines{
       display: grid;

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Square from '../../components/Square';
+import WinnerScreen from '../../components/WinnerScreen';
 import { usePlayer } from '../../context/Player';
 import { Line } from '../../styles/components/Line';
 import { GameDiv } from '../../styles/pages/Game';
 import { PlayersMoves } from '../../types';
-import { currentPlayerMoves, pointChecking } from '../../utils';
+import { currentPlayerMoves, ifItTied, pointChecking } from '../../utils';
 
 var playerMoves: PlayersMoves[] = [
     { player: 1, boardPositions: [] },
@@ -14,18 +15,22 @@ var playerMoves: PlayersMoves[] = [
 const Game: React.FC = () => {
 
     const { ofWhichPlayer, setOfWichPlayer, winner, setWinner } = usePlayer();
+    const [tied, setTied] = useState(false);
 
     const WinnerPlayer = () => {
         const whichPlayer = ofWhichPlayer ? ofWhichPlayer : 5;
         const currentPlayerMovement = currentPlayerMoves(playerMoves, whichPlayer)
         const winningPlayer = pointChecking(currentPlayerMovement, whichPlayer);
 
-        if (!setWinner) return;
+        if (setWinner && winningPlayer?.numbers.length === 3) {
+            setWinner({ ...winningPlayer?.styles, color: winningPlayer?.color })
 
-        winningPlayer?.numbers.length === 3 ? setWinner({
-            ...winningPlayer?.styles,
-            color: winningPlayer?.color
-        }) : console.log("continua o jogo");
+        } else {
+            const numberOfAttempts = ifItTied(playerMoves);
+            if (numberOfAttempts === 9) {
+                setTied(true);
+            }
+        }
 
     }
 
@@ -72,6 +77,7 @@ const Game: React.FC = () => {
             initial="hidden"
             animate="show"
         >
+
             <div className='content-lines' >
                 {winner && (
                     <Line
@@ -135,6 +141,13 @@ const Game: React.FC = () => {
                     handlePlayer={handlePlayer}
                 />
             </div>
+            {(winner || tied) && (
+                <WinnerScreen ofWhichPlayer={
+                    tied ? 5 :
+                        ofWhichPlayer === 1 ? 2 : 1
+                }
+                />
+            )}
         </GameDiv>
     )
 }

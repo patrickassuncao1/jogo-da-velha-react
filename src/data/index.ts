@@ -1,7 +1,7 @@
 export const possibility = [
     {
         numbers: [1, 2, 3],
-        styles: { width: 68 + '%', top: 13 + '%', left: 0, rotate: 0 }
+        styles: { width: 68 + '%', top: 13 + '%', left: 0 + '%', rotate: 0 },
     },
     {
         numbers: [4, 5, 6],
@@ -32,3 +32,4 @@ export const possibility = [
         styles: { width: 80 + '%', top: 50 + '%', left: 0, rotate: 136.5 + "deg" }
     }
 ];
+

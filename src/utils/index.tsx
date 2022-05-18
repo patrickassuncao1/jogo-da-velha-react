@@ -3,7 +3,7 @@ import { PlayersMoves } from "../types";
 
 
 const pointChecking = (boardPositions: number[], player: number) => {
-    let configurations = null;  
+    let configurations = null;
 
     for (const pos of possibility) {
         const hasWon = pos.numbers.filter(element => boardPositions.includes(element));
@@ -30,30 +30,14 @@ const currentPlayerMoves = (playerMoves: PlayersMoves[], ofWhichPlayer: number) 
     return []
 }
 
-/* const pointChecking = (arrayPosition: number, player: number) => {
+const ifItTied = (playerMoves: PlayersMoves[]) => {
+    let values = 0;
 
-    let newObject = null;
-
-    for (let i = 0; i < 8; i++) {
-
-        const arrayPossibility = possibility[i].numbers;
-
-        const result = arrayPossibility.filter(function (value) {
-            return players[arrayPosition].position.indexOf(value) > -1;
-        })
-
-        if (result.length === 3) {
-            newObject = {
-                numbers: result,
-                styles: possibility[i].styles,
-                color: player === 1 ? "white" : "black"
-            };
-
-            break;
-        }
+    for (const player of playerMoves) {
+        values = player.boardPositions.length + values;
     }
 
-    return newObject;
-} */
+    return values;
+}
 
-export { pointChecking, currentPlayerMoves }
+export { pointChecking, currentPlayerMoves, ifItTied }

@@ -25,22 +25,30 @@ export const Line = styled.div<InterfaceLine>`
             display: block;
             height: inherit;
             background:${props => props.color};
+            width: ${props => props.width};
             border-radius: 20px;
-            transform: translate(-100%);
-            animation: thumb 0.5s linear 0s 1 forwards;
+            animation: thumb 0.3s linear 0s 1 forwards;
         }
     
     }
 
     @-webkit-keyframes thumb {
+        from{
+            width: 0;
+        }
         to {
             transform: initial;
+            width: 100%;
         }
     }
 
     @keyframes thumb {
+        from{
+           width: 0;
+        }
         to {
             transform: initial;
+            width: 100%;
         }
     }
 
