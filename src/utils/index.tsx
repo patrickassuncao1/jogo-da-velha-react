@@ -40,4 +40,19 @@ const ifItTied = (playerMoves: PlayersMoves[]) => {
     return values;
 }
 
-export { pointChecking, currentPlayerMoves, ifItTied }
+const botMovement = (playerMoves: PlayersMoves[]) => {
+    const possibility = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    
+    const playerMovements = playerMoves[0].boardPositions
+        .concat(playerMoves[1].boardPositions);
+
+    const possiblePossibility = possibility.filter(element =>
+        !playerMovements.includes(element)
+    );;
+
+    const randomNumber = Math.floor(Math.random() * possiblePossibility.length);
+   
+    return possiblePossibility[randomNumber];
+}
+
+export { pointChecking, currentPlayerMoves, ifItTied, botMovement }

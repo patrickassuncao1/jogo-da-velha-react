@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 //style
@@ -9,7 +9,10 @@ import PlayersIcon from "../PlayersIcon";
 interface Props {
     className: string,
     position: number,
-    handlePlayer: (number: number) => number
+    handlePlayer: (number: number) => number,
+    stopGame?: boolean,
+    positionSquale?: boolean,
+    stopPlayer?: boolean
 }
 
 const Square = (props: Props): JSX.Element => {
@@ -17,11 +20,16 @@ const Square = (props: Props): JSX.Element => {
     const [marked, setMarked] = useState(false);
     const [player, setPlayer] = useState(5);
 
-    const playAnimation = (event: MouseEvent) => {
+    useEffect(() => {
+        if (props.positionSquale && !props.stopGame) playAnimation();
+
+    }, [props.positionSquale]) // eslint-disable-line
+
+    const playAnimation = () => {
 
         if (marked) return
 
-        !marked ? setMarked(true) : event.preventDefault();
+        !marked && setMarked(true);
 
         setPlayer(props.handlePlayer(props.position));
 
@@ -31,10 +39,13 @@ const Square = (props: Props): JSX.Element => {
     }
 
 
+
     return (
         <motion.div className={props.className} variants={item}>
             <SSvg
-                onClick={playAnimation}
+                onClick={!props.stopPlayer
+                    ? playAnimation
+                    : () => console.log('sua vez')}
             >
                 <PlayersIcon player={player} />
             </SSvg>

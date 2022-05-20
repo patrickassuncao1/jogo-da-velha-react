@@ -1,13 +1,14 @@
 import { SSvg } from "../../styles/components/SSvg";
-import { SwinnerScreen } from "../../styles/components/SWinnerScreen";
+import { SwinnerScreen, TiedTextElements } from "../../styles/components/SWinnerScreen";
 import PlayersIcon from "../PlayersIcon";
+import RenderIf from "../RenderIf";
+import X from "../PlayersXO/X";
+import O from "../PlayersXO/O";
 interface WinnerScreenType {
     ofWhichPlayer?: number
 }
 
 const WinnerScreen = ({ ofWhichPlayer }: WinnerScreenType): JSX.Element => {
-
-    console.log(ofWhichPlayer);
     const colorSpan = ofWhichPlayer === 1 ? 'white' : 'black';
     const text = ofWhichPlayer === 5 ? "Empatou!" : "Vencedor!";
 
@@ -30,8 +31,16 @@ const WinnerScreen = ({ ofWhichPlayer }: WinnerScreenType): JSX.Element => {
         >
             <SSvg>
                 <PlayersIcon player={ofWhichPlayer ? ofWhichPlayer : 5} />
+                <RenderIf isTrue={ofWhichPlayer === 5} >
+                    <TiedTextElements>
+                        <X />
+                        <O />
+                    </TiedTextElements>
+                </RenderIf>
+
                 <span>{text}</span>
             </SSvg>
+
 
         </SwinnerScreen>
     );

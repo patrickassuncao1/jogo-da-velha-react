@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Panel from '../../components/Panel';
 import Square from '../../components/Square';
 import WinnerScreen from '../../components/WinnerScreen';
@@ -6,44 +6,17 @@ import { usePlayer } from '../../context/Player';
 import { Line } from '../../styles/components/Line';
 import { GameDiv } from '../../styles/pages/Game';
 import { PlayersMoves } from '../../types';
-import { currentPlayerMoves, ifItTied, pointChecking, botMovement } from '../../utils';
+import { currentPlayerMoves, ifItTied, pointChecking } from '../../utils';
 
 var playerMoves: PlayersMoves[] = [
     { player: 1, boardPositions: [] },
     { player: 2, boardPositions: [] }
 ]
 
-const Game: React.FC = () => {
+const MultiplayerGame: React.FC = () => {
 
     const { ofWhichPlayer, setOfWichPlayer, winner, setWinner } = usePlayer();
     const [tied, setTied] = useState(false);
-    const [stopPlayer, setstopPlayer] = useState(false);
-    const [positionSquale, setpositionSquale] = useState({
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: false,
-        6: false,
-        7: false,
-        8: false,
-        9: false
-    });
-
-    useEffect(() => {
-        setTimeout(() => {
-            if (ofWhichPlayer === 2) {
-                const botPlayer = botMovement(playerMoves);
-                console.log(botPlayer);
-                setpositionSquale({ ...positionSquale, [botPlayer]: true })
-            }
-        },500)
-    }, [stopPlayer]) // eslint-disable-line
-
-
-    useEffect(() => {
-        ofWhichPlayer === 2 ? setstopPlayer(true) : setstopPlayer(false);
-    }, [ofWhichPlayer])
 
     const WinnerPlayer = () => {
         const whichPlayer = ofWhichPlayer ? ofWhichPlayer : 5;
@@ -127,27 +100,16 @@ const Game: React.FC = () => {
                     position={1}
                     className='border-2'
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[1]}
-                    stopGame={winner || tied ? true : false}
                 />
                 <Square
                     position={2}
                     className=''
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[2]}
-                    stopGame={winner || tied ? true : false}
-
                 />
                 <Square
                     position={3}
                     className='border-3'
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[3]}
-                    stopGame={winner || tied ? true : false}
-
                 />
 
                 {/* Segunda linha */}
@@ -155,27 +117,16 @@ const Game: React.FC = () => {
                     position={4}
                     className='border border-2'
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[4]}
-                    stopGame={winner || tied ? true : false}
-
                 />
                 <Square
                     position={5}
                     className='border'
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[5]}
-                    stopGame={winner || tied ? true : false}
-
                 />
                 <Square
                     position={6}
                     className='border border-3'
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[6]}
-                    stopGame={winner || tied ? true : false}
                 />
 
                 {/* Terceira Linha */}
@@ -183,26 +134,16 @@ const Game: React.FC = () => {
                     position={7}
                     className='border-2'
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[7]}
-                    stopGame={winner || tied ? true : false}
                 />
                 <Square
                     position={8}
                     className=''
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[8]}
-                    stopGame={winner || tied ? true : false}
-
                 />
                 <Square
                     position={9}
                     className='border-3'
                     handlePlayer={handlePlayer}
-                    stopPlayer={stopPlayer}
-                    positionSquale={positionSquale[9]}
-                    stopGame={winner || tied ? true : false}
                 />
             </div>
             {(winner || tied) && (
@@ -216,4 +157,4 @@ const Game: React.FC = () => {
     )
 }
 
-export default Game;
+export default MultiplayerGame;

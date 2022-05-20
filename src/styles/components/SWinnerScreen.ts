@@ -5,7 +5,7 @@ interface WinnerScreenType {
     colorSpan: "white" | "black"
 }
 
-export const SwinnerScreen = styled(motion.div)<WinnerScreenType>`
+export const SwinnerScreen = styled(motion.div) <WinnerScreenType>`
     position: absolute;
     width: 100%;
     height: 100%;
@@ -22,3 +22,13 @@ export const SwinnerScreen = styled(motion.div)<WinnerScreenType>`
         color:  ${props => props.colorSpan};
     }
 `;
+
+export const TiedTextElements = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+
+
+`
