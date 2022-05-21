@@ -15,10 +15,10 @@ export const GameDiv = styled(motion.div)`
       justify-content: center;
       width: 500px;
       max-width: 100%;
-      grid-template-columns: 0.23fr 0.2fr 0.23fr ;
+      grid-template-columns: 0.28fr 0.26fr 0.28fr ;
       grid-template-rows: 90px 130px 90px;
       position: relative;
-
+      transition: all 0.5s ease;
       div{
           display: flex;
           align-items: center;

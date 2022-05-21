@@ -13,7 +13,7 @@ export const possibility = [
     },
     {
         numbers: [1, 4, 7],
-        styles: { width: 68 + '%', top: 50 + '%', left: -23 + '%', rotate: 90 + "deg" }
+        styles: { width: 68 + '%', top: 50 + '%', left: -29 + '%', rotate: 90 + "deg" }
     },
     {
         numbers: [2, 5, 8],
@@ -21,15 +21,15 @@ export const possibility = [
     },
     {
         numbers: [3, 6, 9],
-        styles: { width: 68 + '%', top: 50 + '%', left: 23 + '%', rotate: 90 + "deg" }
+        styles: { width: 68 + '%', top: 50 + '%', left: 27.9 + '%', rotate: 90 + "deg" }
     },
     {
         numbers: [1, 5, 9],
-        styles: { width: 80 + '%', top: 50 + '%', left: 0, rotate: 45 + "deg" }
+        styles: { width: 80 + '%', top: 50 + '%', left: 0, rotate: 38 + "deg" }
     },
     {
         numbers: [3, 5, 7],
-        styles: { width: 80 + '%', top: 50 + '%', left: 0, rotate: 136.5 + "deg" }
+        styles: { width: 80 + '%', top: 50 + '%', left: 0, rotate: 142 + "deg" }
     }
 ];
 

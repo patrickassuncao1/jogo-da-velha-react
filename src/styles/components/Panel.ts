@@ -8,7 +8,11 @@ export const SPanel = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-items: center;
     flex-direction: column;
+    @media screen and (max-width:400px) {
+        top: 5%;
+    }
     div{
         width: 100%; 
         display: flex;
@@ -17,7 +21,7 @@ export const SPanel = styled(motion.div)`
 
         article{
             width: 10rem;
-            max-width: 50%;
+            max-width: 40%;
             height: 3rem;
             background-color: ${props => props.theme.colors.background};
             box-sizing: border-box;
@@ -25,11 +29,11 @@ export const SPanel = styled(motion.div)`
             align-items: center;
             justify-content: space-between;
             padding: 0 1rem 0 1rem;
-            -webkit-box-shadow: 0.8px 0px 3px 0px white;
-            -moz-box-shadow: 0.8px 0px 3px 0px white;
             box-shadow: 0.8px 0px 3px 0px white;
+            
             span{
                 font-size: 1.5rem;
+                
             }
             &:first-child{
                 color: white;
