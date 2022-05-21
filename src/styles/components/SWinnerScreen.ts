@@ -21,6 +21,28 @@ export const SwinnerScreen = styled(motion.div) <WinnerScreenType>`
         font-size: 4rem;
         color:  ${props => props.colorSpan};
     }
+    button{
+        width: 18rem;
+        max-width: 90%;
+        height: 3rem;
+        border: none;
+        font-size: 1.5rem;
+        background-color: white;
+        box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.2);
+        transition: all 0.5s ease;
+        
+        &:hover{
+            background-color: ${props => props.theme.colors.background};
+            color: white;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+        }
+
+        &:active{
+            background-color: white;
+        }
+
+    }
 `;
 
 export const TiedTextElements = styled.div`

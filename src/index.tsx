@@ -5,7 +5,6 @@ import GlobalStyle from './styles/global';
 import theme from './styles/theme';
 
 import reportWebVitals from './reportWebVitals';
-import PlayerProvider from './context/Player';
 import AppRoutes from './routes';
 
 const root = ReactDOM.createRoot(
@@ -18,9 +17,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <PlayerProvider>
-        <AppRoutes />
-      </PlayerProvider>
+      <AppRoutes />
     </ThemeProvider>
 
   </React.StrictMode>

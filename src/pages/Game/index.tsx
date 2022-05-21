@@ -3,41 +3,37 @@ import Panel from '../../components/Panel';
 import Square from '../../components/Square';
 import WinnerScreen from '../../components/WinnerScreen';
 import { usePlayer } from '../../context/Player';
+import { initialPlayerMoves, initialValue } from '../../data';
 import { Line } from '../../styles/components/Line';
 import { GameDiv } from '../../styles/pages/Game';
 import { PlayersMoves } from '../../types';
 import { currentPlayerMoves, ifItTied, pointChecking, botMovement } from '../../utils';
 
-var playerMoves: PlayersMoves[] = [
-    { player: 1, boardPositions: [] },
-    { player: 2, boardPositions: [] }
-]
+var playerMoves: PlayersMoves[] = initialPlayerMoves;
 
 const Game: React.FC = () => {
 
-    const { ofWhichPlayer, setOfWichPlayer, winner, setWinner } = usePlayer();
+    const { ofWhichPlayer, setOfWichPlayer, winner, setWinner, restart } = usePlayer();
     const [tied, setTied] = useState(false);
     const [stopPlayer, setstopPlayer] = useState(false);
-    const [positionSquale, setpositionSquale] = useState({
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: false,
-        6: false,
-        7: false,
-        8: false,
-        9: false
-    });
+    const [positionSquale, setpositionSquale] = useState(initialValue);
+
+    useEffect(() => {
+        if (restart) {
+            playerMoves = initialPlayerMoves;
+            setpositionSquale(initialValue);
+            setTied(false);
+            setstopPlayer(false);
+        }
+    }, [restart])
 
     useEffect(() => {
         setTimeout(() => {
             if (ofWhichPlayer === 2) {
                 const botPlayer = botMovement(playerMoves);
-                console.log(botPlayer);
                 setpositionSquale({ ...positionSquale, [botPlayer]: true })
             }
-        },500)
+        }, 500)
     }, [stopPlayer]) // eslint-disable-line
 
 
@@ -104,6 +100,7 @@ const Game: React.FC = () => {
             variants={container}
             initial="hidden"
             animate="show"
+
         >
             <Panel
                 ofWhichPlayer={ofWhichPlayer}

@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Panel from '../../components/Panel';
 import Square from '../../components/Square';
 import WinnerScreen from '../../components/WinnerScreen';
 import { usePlayer } from '../../context/Player';
+import { initialPlayerMoves } from '../../data';
 import { Line } from '../../styles/components/Line';
 import { GameDiv } from '../../styles/pages/Game';
 import { PlayersMoves } from '../../types';
 import { currentPlayerMoves, ifItTied, pointChecking } from '../../utils';
 
-var playerMoves: PlayersMoves[] = [
-    { player: 1, boardPositions: [] },
-    { player: 2, boardPositions: [] }
-]
+var playerMoves: PlayersMoves[] = initialPlayerMoves
 
 const MultiplayerGame: React.FC = () => {
 
-    const { ofWhichPlayer, setOfWichPlayer, winner, setWinner } = usePlayer();
+    const { ofWhichPlayer, setOfWichPlayer, winner, setWinner, restart, } = usePlayer();
     const [tied, setTied] = useState(false);
+
+    useEffect(() => {
+        if (restart) {
+            playerMoves = initialPlayerMoves;
+            setTied(false);
+        }
+    }, [restart])
+
 
     const WinnerPlayer = () => {
         const whichPlayer = ofWhichPlayer ? ofWhichPlayer : 5;

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 //style
 import { SSvg } from "../../styles/components/SSvg";
 import PlayersIcon from "../PlayersIcon";
+import { usePlayer } from "../../context/Player";
 
 
 interface Props {
@@ -19,6 +20,14 @@ const Square = (props: Props): JSX.Element => {
 
     const [marked, setMarked] = useState(false);
     const [player, setPlayer] = useState(5);
+    const {restart} = usePlayer()
+
+    useEffect(() => {
+        if(restart){
+            setMarked(false);
+            setPlayer(5);
+        } 
+    },[restart])
 
     useEffect(() => {
         if (props.positionSquale && !props.stopGame) playAnimation();
