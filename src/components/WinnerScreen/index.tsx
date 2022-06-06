@@ -48,7 +48,7 @@ const WinnerScreen = ({ ofWhichPlayer }: WinnerScreenType): JSX.Element => {
             variants={container}
             initial="hidden"
             animate="show"
-            colorSpan={colorSpan}
+            colorspan={colorSpan}
         >
             <SSvg>
                 <PlayersIcon player={ofWhichPlayer ? ofWhichPlayer : 5} />

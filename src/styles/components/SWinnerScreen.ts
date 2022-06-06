@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 interface WinnerScreenType {
-    colorSpan: "white" | "black"
+    colorspan: "white" | "black"
 }
 
 export const SwinnerScreen = styled(motion.div) <WinnerScreenType>`
@@ -19,7 +19,7 @@ export const SwinnerScreen = styled(motion.div) <WinnerScreenType>`
 
     span{
         font-size: 4rem;
-        color:  ${props => props.colorSpan};
+        color:  ${props => props.colorspan};
     }
     button{
         width: 18rem;
