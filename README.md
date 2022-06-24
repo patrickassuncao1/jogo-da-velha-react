@@ -6,5 +6,5 @@ App em desenvolvido para adquirir habilidades com React.
 Executa o aplicativo no modo de desenvolvimento.\
 Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
 
-Jogue agora mesmo <a href="https://expo.io" target="_blank">Clique aqui</a>
+Jogue agora mesmo <a href="https://jogo-da-velha-react-js-patrick.vercel.app" target="_blank">Clique aqui</a>
 
