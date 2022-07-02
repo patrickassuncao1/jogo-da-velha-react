@@ -70,7 +70,6 @@ const PlayerProvider = (props: Player) => {
 
 export const usePlayer = () => {
     const context = useContext(PlayerContext);
-
     const {
         ofWhichPlayer,
         setOfWichPlayer,

@@ -19,6 +19,7 @@ export const SStart = styled(motion.div)`
         button{
             width: 10rem;
             max-width: 90%;
+            color: #000000;
             height: 3rem;
             border: none;
             font-size: 1.5rem;
@@ -69,7 +70,7 @@ export const SStart = styled(motion.div)`
             color: white;
             font-size: 4rem;
 
-            @media screen and (max-width:370px) {
+            @media screen and (max-width:400px) {
                 font-size: 3rem;
             }
             span{
