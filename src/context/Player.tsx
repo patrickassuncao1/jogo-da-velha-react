@@ -40,7 +40,7 @@ const PlayerProvider = (props: Player) => {
     }, [restart])
 
     useEffect(() => {
-        if (!winner) {
+        if (!winner || winner === undefined) {
             setRestart(false);
         }
     }, [winner])

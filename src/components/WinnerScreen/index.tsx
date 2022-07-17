@@ -50,7 +50,7 @@ const WinnerScreen = ({ ofWhichPlayer }: WinnerScreenType): JSX.Element => {
             animate="show"
             colorspan={colorSpan}
         >
-            <SSvg>
+            <SSvg nonecursorpointer={'true'}>
                 <PlayersIcon player={ofWhichPlayer ? ofWhichPlayer : 5} />
                 <RenderIf isTrue={ofWhichPlayer === 5} >
                     <TiedTextElements>

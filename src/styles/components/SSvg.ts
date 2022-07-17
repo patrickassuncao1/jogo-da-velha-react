@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import { motion } from "framer-motion";
 
-export const SSvg = styled(motion.div)`
+type SvgType = {
+    nonecursorpointer?: string
+}
+
+export const SSvg = styled(motion.div) <SvgType>`
     width: 90%;
     height: 90%;
-    cursor:pointer;
+    cursor:${props => props.nonecursorpointer === 'true' ? 'none' : 'pointer'};
     display: flex;
     align-items: center;
     justify-content: center;
