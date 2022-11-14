@@ -8,7 +8,7 @@ type SvgType = {
 export const SSvg = styled(motion.div) <SvgType>`
     width: 90%;
     height: 90%;
-    cursor:${props => props.nonecursorpointer === 'true' ? 'none' : 'pointer'};
+    cursor:${props => props.nonecursorpointer === 'true' ? 'default' : 'pointer'};
     display: flex;
     align-items: center;
     justify-content: center;
